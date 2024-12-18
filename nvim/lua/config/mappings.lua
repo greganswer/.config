@@ -43,4 +43,20 @@ vim.keymap.set('i', '<c-a>', '<Esc>:w<cr>')
 vim.keymap.set('n', '<c-a>', '<Esc>:w<cr>')
 vim.keymap.set('n', '<leader>w', '<Esc>:w<cr>')
 
--- vim: ts=2 sts=2 sw=2 et
+-- Make the curson remain in place when [J]oining lines
+vim.keymap.set("n", "J", "mzJ`z")
+
+-- Use Ctrl-C instead of Esc when in vertical edit mode.
+vim.keymap.set("i", "<C-c>", "<Esc>")
+
+-- Keep the cursor in the middle as you scroll
+vim.keymap.set("n", "<C-d>", "<C-d>zz")
+vim.keymap.set("n", "<C-u>", "<C-u>zz")
+
+-- Keep the cursor in the middle as you search
+vim.keymap.set("n", "n", "nzzzv")
+vim.keymap.set("n", "N", "Nzzzv")
+
+-- Avoid 'Q' for some reason. Thanks Primeagen.
+-- https://youtu.be/w7i4amO_zaE?si=o7xp8VMWAU5Jmz9K&t=1695
+vim.keymap.set("n", "Q", "<nop>")

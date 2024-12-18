@@ -26,11 +26,18 @@ end)
 vim.opt.breakindent = true
 
 -- Save undo history
+vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.undofile = true
+vim.opt.swapfile = false
+vim.opt.backup = false
 
 -- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
+
+-- Incrementtal search
+vim.opt.incsearch = true
+vim.opt.hlsearch = true
 
 -- Keep signcolumn on by default
 vim.opt.signcolumn = 'yes'
@@ -61,9 +68,6 @@ vim.opt.cursorline = true
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
 
--- Prefer no swap file
-vim.opt.swapfile = false
-
 -- use number of spaces to insert a <Tab>
 vim.opt.expandtab = true
 vim.opt.shiftwidth = 2
@@ -74,4 +78,10 @@ vim.opt.termguicolors = true
 
 vim.opt.cmdheight = 0
 
--- vim: ts=2 sts=2 sw=2 et
+-- Tabs
+vim.opt.tabstop = 2
+vim.opt.softtabstop = 2
+vim.opt.shiftwidth = 2
+vim.opt.expandtab = true
+vim.opt.shiftround = true
+vim.opt.smarttab = true
