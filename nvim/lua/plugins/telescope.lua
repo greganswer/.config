@@ -43,7 +43,11 @@ return {
         --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
         --   },
         -- },
-        -- pickers = {}
+        pickers = {
+          find_files = {
+            hidden = true,
+          },
+        },
         extensions = {
           ['ui-select'] = {
             require('telescope.themes').get_dropdown(),
@@ -72,7 +76,11 @@ return {
       -- Search recent files in the current working directory
       vim.keymap.set('n', '<leader>sr', function()
         builtin.oldfiles { only_cwd = true }
-      end, { desc = '[S]earch [R]ecent Files ("." for repeat)' })
+      end, { desc = '[S]earch [R]ecent Files' })
+
+      vim.keymap.set('n', '<C-e>', function()
+        builtin.oldfiles { only_cwd = true }
+      end, { desc = '[S]earch [R]ecent Files' })
 
       -- Slightly advanced example of overriding default behavior and theme
       vim.keymap.set('n', '<leader>/', function()

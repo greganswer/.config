@@ -2,17 +2,59 @@
 -- See `:help vim.opt`
 --  For more options, you can see `:help option-list`
 
--- Make line numbers default
-vim.opt.number = true
+--
+-- Saving
+--
+vim.opt.undodir = os.getenv 'HOME' .. '/.vim/undodir'
+vim.opt.undofile = true
+vim.opt.swapfile = false
+vim.opt.backup = false
+vim.opt.autoread = true -- automatically read the current file when changed outside vim
+vim.opt.autowrite = true -- automatically write before running commands
 
--- Show relative line numbers
-vim.opt.relativenumber = true
+--
+-- Searching
+--
+vim.opt.incsearch = true
+vim.opt.hlsearch = true
+vim.opt.ignorecase = true -- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
+vim.opt.smartcase = true
 
--- Enable mouse mode, can be useful for resizing splits for example!
-vim.opt.mouse = 'a'
+--
+-- Tabs
+--
 
--- Don't show the mode, since it's already in the status line
-vim.opt.showmode = false
+vim.opt.expandtab = true
+vim.opt.shiftround = true
+vim.opt.shiftwidth = 2 -- use number of spaces to insert a <Tab>
+vim.opt.smarttab = true
+vim.opt.softtabstop = 2
+vim.opt.tabstop = 2
+
+--
+-- Misc
+--
+vim.opt.signcolumn = 'yes' -- Keep signcolumn on by default
+vim.opt.updatetime = 250 -- Decrease update time
+vim.opt.timeoutlen = 300 -- Decrease mapped sequence wait time Displays which-key popup sooner
+vim.opt.splitright = true -- Configure how new splits should be opened
+vim.opt.splitbelow = true -- Configure how new splits should be opened
+
+-- Sets how neovim will display certain whitespace characters in the editor.
+--  See `:help 'list'`
+--  and `:help 'listchars'`
+vim.opt.list = true
+vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+vim.opt.inccommand = 'split' -- Preview substitutions live, as you type!
+vim.opt.cursorline = true -- Show which line your cursor is on
+vim.opt.scrolloff = 10 -- Minimal number of screen lines to keep above and below the cursor.
+vim.opt.termguicolors = true
+vim.opt.cmdheight = 0
+vim.opt.breakindent = true -- Enable break indent
+vim.opt.number = true -- Make line numbers default
+vim.opt.relativenumber = true -- Show relative line numbers
+vim.opt.mouse = 'a' -- Enable mouse mode, can be useful for resizing splits for example!
+vim.opt.showmode = false -- Don't show the mode, since it's already in the status line
 
 -- Sync clipboard between OS and Neovim.
 --  Schedule the setting after `UiEnter` because it can increase startup-time.
@@ -21,67 +63,3 @@ vim.opt.showmode = false
 vim.schedule(function()
   vim.opt.clipboard = 'unnamedplus'
 end)
-
--- Enable break indent
-vim.opt.breakindent = true
-
--- Save undo history
-vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
-vim.opt.undofile = true
-vim.opt.swapfile = false
-vim.opt.backup = false
-
--- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
-
--- Incrementtal search
-vim.opt.incsearch = true
-vim.opt.hlsearch = true
-
--- Keep signcolumn on by default
-vim.opt.signcolumn = 'yes'
-
--- Decrease update time
-vim.opt.updatetime = 250
-
--- Decrease mapped sequence wait time
--- Displays which-key popup sooner
-vim.opt.timeoutlen = 300
-
--- Configure how new splits should be opened
-vim.opt.splitright = true
-vim.opt.splitbelow = true
-
--- Sets how neovim will display certain whitespace characters in the editor.
---  See `:help 'list'`
---  and `:help 'listchars'`
-vim.opt.list = true
-vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
-
--- Preview substitutions live, as you type!
-vim.opt.inccommand = 'split'
-
--- Show which line your cursor is on
-vim.opt.cursorline = true
-
--- Minimal number of screen lines to keep above and below the cursor.
-vim.opt.scrolloff = 10
-
--- use number of spaces to insert a <Tab>
-vim.opt.expandtab = true
-vim.opt.shiftwidth = 2
-vim.opt.tabstop = 2
-vim.opt.softtabstop = 2
-
-vim.opt.termguicolors = true
-
-vim.opt.cmdheight = 0
-
--- Tabs
-vim.opt.tabstop = 2
-vim.opt.softtabstop = 2
-vim.opt.shiftwidth = 2
-vim.opt.expandtab = true
-vim.opt.shiftround = true
-vim.opt.smarttab = true

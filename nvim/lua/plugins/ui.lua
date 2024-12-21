@@ -2,15 +2,15 @@ return {
   -- Color theme
   -- https://github.com/olimorris/onedarkpro.nvim
   {
-    "olimorris/onedarkpro.nvim",
+    'olimorris/onedarkpro.nvim',
     priority = 1000, -- Ensure it loads first
     config = function()
-      require("onedarkpro").setup({
+      require('onedarkpro').setup {
         colors = {
-          dark = { bg = "#292854" }, -- Dark blue
-        }
-      })
-      vim.cmd("colorscheme onedark")
+          dark = { bg = '#292854' }, -- Dark blue
+        },
+      }
+      vim.cmd 'colorscheme onedark'
     end,
   },
 
@@ -20,6 +20,6 @@ return {
     'folke/todo-comments.nvim',
     event = 'VimEnter',
     dependencies = { 'nvim-lua/plenary.nvim' },
-    opts = { signs = false }
+    opts = { signs = false, highlight = { after = '' } },
   },
 }

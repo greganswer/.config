@@ -1,37 +1,12 @@
 return {
-  { -- Highlight, edit, and navigate code
+  -- Highlight, edit, and navigate code
+  -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
+  {
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
     main = 'nvim-treesitter.configs', -- Sets main module to use for opts
-    -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
     opts = {
-      ensure_installed = {
-        'bash',
-        'c',
-        'comment',
-        'css',
-        'diff',
-        'dockerfile',
-        'embedded_template',
-        'html',
-        'javascript',
-        'json',
-        'lua',
-        'luadoc',
-        'markdown',
-        'markdown_inline',
-        'python',
-        'query',
-        'regex',
-        'ruby',
-        'tsx',
-        'typescript',
-        'vim',
-        'vimdoc',
-        'yaml',
-      },
-      -- Autoinstall languages that are not installed
-      auto_install = true,
+      auto_install = true, -- Auto install languages that are not installed
       highlight = {
         enable = true,
         -- Some languages depend on vim's regex highlighting system (such as Ruby) for indent rules.

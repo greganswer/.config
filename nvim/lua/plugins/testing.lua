@@ -58,19 +58,18 @@ return {
 
   -- A Vim wrapper for running tests on different granularities.
   -- https://github.com/vim-test/vim-test
+  -- https://github.com/skbolton/titan/blob/main/nvim/nvim/lua/testing.lua
   {
     'vim-test/vim-test',
     config = function()
-      -- Config
-      -- https://github.com/skbolton/titan/blob/main/nvim/nvim/lua/testing.lua
       vim.g['test#strategy'] = 'vimux'
       vim.g.VimuxOrientation = 'h'
       vim.g.VimuxUseNearest = 0
 
       -- Keymap
-      vim.keymap.set('n', '<Leader>t', ':TestFile <CR>', { noremap = true, silent = true })
-      vim.keymap.set('n', '<Leader>s', ':TestNearest <CR>', { noremap = true, silent = true })
-      vim.keymap.set('n', '<Leader>l', ':TestLast <CR>', { noremap = true, silent = true })
+      vim.keymap.set('n', '<Leader>tf', ':TestFile <CR>', { desc = '[T]est [F]ile', noremap = true, silent = true })
+      vim.keymap.set('n', '<Leader>tn', ':TestNearest <CR>', { desc = '[T]est [N]earest', noremap = true, silent = true })
+      vim.keymap.set('n', '<Leader>tl', ':TestLast <CR>', { desc = '[T]est [L]ast', noremap = true, silent = true })
     end,
   },
 }
