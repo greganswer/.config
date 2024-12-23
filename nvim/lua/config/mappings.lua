@@ -18,6 +18,22 @@ map('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
 map('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 map('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
+-- Move to begining or end of line
+map('n', 'H', '^', { noremap = true })
+map('n', 'L', '$', { noremap = true })
+
+-- increment/decrement numbers
+map('n', '<leader>+', '<C-a>', { desc = 'Increment number' }) -- increment
+map('n', '<leader>-', '<C-x>', { desc = 'Decrement number' }) -- decrement
+
+-- Move line up and down in various modes
+map('n', '<A-j>', ':m .+1<CR>==', { noremap = true, silent = true })
+map('n', '<A-k>', ':m .-2<CR>==', { noremap = true, silent = true })
+map('i', '<A-j>', '<Esc>:m .+1<CR>==gi', { noremap = true, silent = true })
+map('i', '<A-k>', '<Esc>:m .-2<CR>==gi', { noremap = true, silent = true })
+map('v', '<A-j>', ":m '>+1<CR>gv=gv", { noremap = true, silent = true })
+map('v', '<A-k>', ":m '<-2<CR>gv=gv", { noremap = true, silent = true })
+
 --
 -- Misc
 --
