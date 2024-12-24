@@ -2,6 +2,7 @@
 -- https://www.lazyvim.org/configuration/plugins
 
 local map = vim.keymap.set
+local HOME = os.getenv("HOME")
 
 return {
   -- Vim plugin for editing Ruby on Rails applications
@@ -83,5 +84,18 @@ return {
     config = function()
       map("n", "<leader>cm", require("treesj").toggle, { desc = "split/join node under cursor" })
     end,
+  },
+
+  -- https://github.com/mfussenegger/nvim-lint
+  {
+    "mfussenegger/nvim-lint",
+    optional = true,
+    opts = {
+      linters = {
+        ["markdownlint-cli2"] = {
+          args = { "--config", HOME .. "/.markdownlint-cli2.yaml", "--" },
+        },
+      },
+    },
   },
 }
