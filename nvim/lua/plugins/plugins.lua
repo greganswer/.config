@@ -40,6 +40,10 @@ return {
         default = { "buffer", "snippets", "lsp", "path" },
         cmdline = {},
       },
+      keymap = {
+        ["<C-k>"] = { "select_prev", "fallback" },
+        ["<C-j>"] = { "select_next", "fallback" },
+      },
     },
   },
 

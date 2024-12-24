@@ -1,9 +1,37 @@
 {
+  "leet": {
+    "prefix": "leet",
+    "body": [
+      "=begin",
+      "Output:",
+      "Input:",
+      "Constraints:",
+      "Example:",
+      "Brute Force:",
+      "Optimization 1:",
+      "=end"
+    ],
+    "description": [
+      "RSpec context with one-liner syntax for setting an expectation on the subject"
+    ]
+  },
   "rspec_is_expected": {
     "prefix": "itie",
     "body": "it { is_expected.to ${1:matcher} }$0",
     "description": [
       "RSpec supports a one-liner syntax for setting an expectation on the subject"
+    ]
+  },
+  "rspec_context_is_expected": {
+    "prefix": "contis",
+    "body": [
+      "context '${1:message}' do",
+      "$0",
+      "it { is_expected.to ${2:matcher} }",
+      "end"
+    ],
+    "description": [
+      "RSpec context with one-liner syntax for setting an expectation on the subject"
     ]
   }
 }
