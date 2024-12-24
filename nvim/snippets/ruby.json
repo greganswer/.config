@@ -1,0 +1,9 @@
+{
+  "rspec_is_expected": {
+    "prefix": "itie",
+    "body": "it { is_expected.to ${1:matcher} }$0",
+    "description": [
+      "RSpec supports a one-liner syntax for setting an expectation on the subject"
+    ]
+  }
+}
