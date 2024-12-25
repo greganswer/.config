@@ -16,3 +16,5 @@ vim.g.snacks_animate = false
 opt.smoothscroll = false
 opt.swapfile = false
 opt.backup = false
+vim.opt.spelllang = "en_us"
+vim.opt.spell = true

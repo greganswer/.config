@@ -5,4 +5,4 @@
 local map = vim.keymap.set
 
 map({ "i", "n" }, "jk", "<Esc>:w<cr>") -- Press 'jk' rapidly to write and return to normal mode.
-map("n", "<leader><leader>", "<C-^>", { desc = "Switch between last 2 files", noremap = true })
+map("n", "<leader><leader>", "<C-^>", { desc = "Toggle last files", noremap = true })

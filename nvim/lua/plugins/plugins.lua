@@ -37,9 +37,9 @@ return {
     "saghen/blink.cmp",
     opts = {
       sources = {
-        compat = {},
+        -- compat = {}, -- TODO: Delete if not needed.
         default = { "buffer", "snippets", "lsp", "path" },
-        cmdline = {},
+        -- cmdline = {}, -- TODO: Delete if not needed.
       },
       keymap = {
         ["<C-k>"] = { "select_prev", "fallback" },
@@ -86,6 +86,18 @@ return {
     end,
   },
 
+  -- LSP config
+  -- https://github.com/neovim/nvim-lspconfig
+  {
+    "neovim/nvim-lspconfig",
+    opts = {
+      servers = {
+        typos_lsp = { enabled = true }, --NOTE: Set to false if this type of spell checking becomes annoying.
+      },
+    },
+  },
+
+  -- Linting
   -- https://github.com/mfussenegger/nvim-lint
   {
     "mfussenegger/nvim-lint",
@@ -97,5 +109,49 @@ return {
         },
       },
     },
+  },
+
+  -- Spell checking
+  -- https://github.com/tekumara/typos-lsp
+  {
+    "tekumara/typos-lsp",
+  },
+
+  -- Outline for the current buffer
+  -- https://github.com/hedyhli/outline.nvim
+  {
+    "hedyhli/outline.nvim",
+    config = function()
+      map("n", "<leader>co", "<cmd>Outline<CR>", { desc = "Outline" })
+      require("outline").setup({
+        outline_window = {
+          position = "left", -- Where to open the split window: right/left
+          show_numbers = true,
+          show_relative_numbers = true,
+        },
+      })
+    end,
+  },
+
+  -- Refactoring
+  -- https://github.com/ThePrimeagen/refactoring.nvim
+  {
+    "ThePrimeagen/refactoring.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
+    },
+    lazy = false,
+    config = function()
+      require("refactoring").setup()
+      map("n", "<leader>r", "", { desc = "+refactor" })
+      map("x", "<leader>re", ":Refactor extract ", { desc = "Extract" })
+      map("x", "<leader>rf", ":Refactor extract_to_file ", { desc = "Extract to file" })
+      map("x", "<leader>rv", ":Refactor extract_var ", { desc = "Extract var" })
+      map({ "n", "x" }, "<leader>ri", ":Refactor inline_var", { desc = "Inline var" })
+      map("n", "<leader>rI", ":Refactor inline_func", { desc = "Inline func" })
+      map("n", "<leader>rb", ":Refactor extract_block", { desc = "Extract block" })
+      map("n", "<leader>rbf", ":Refactor extract_block_to_file", { desc = "Extract block to file" })
+    end,
   },
 }

@@ -1,0 +1,13 @@
+{
+  "Changelog": {
+    "prefix": "chlog",
+    "body": [
+      "## Changes",
+      "### Added",
+      "### Fixed",
+      "### Change",
+      "### Removed"
+    ],
+    "description": "A basic change log"
+  }
+}
