@@ -154,4 +154,19 @@ return {
       map("n", "<leader>rbf", ":Refactor extract_block_to_file", { desc = "Extract block to file" })
     end,
   },
+
+  -- Solve LeetCode problems within Neovim
+  -- https://github.com/kawre/leetcode.nvim
+  {
+    "kawre/leetcode.nvim",
+    build = ":TSUpdate html",
+    dependencies = {
+      "ibhagwan/fzf-lua",
+      "nvim-lua/plenary.nvim",
+      "MunifTanjim/nui.nvim",
+    },
+    opts = {
+      lang = "python3",
+    },
+  },
 }
