@@ -174,12 +174,12 @@ return {
   -- https://github.com/kawre/leetcode.nvim
   {
     "kawre/leetcode.nvim",
-    -- build = ":TSUpdate html", -- FIXME: Not sure why it's needed but it's not working
+    build = ":TSUpdate html", -- FIXME: Not sure why it's needed but it's not working
     dependencies = {
       "ibhagwan/fzf-lua",
       "nvim-lua/plenary.nvim",
       "MunifTanjim/nui.nvim",
-      "tree-sitter/tree-sitter-html", -- TODO: Add this dependency
+      "tree-sitter/tree-sitter-html",
     },
     opts = function(_, opts)
       opts.lang = "python3"
