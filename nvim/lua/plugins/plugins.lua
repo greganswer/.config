@@ -5,6 +5,10 @@ local map = vim.keymap.set
 local HOME = os.getenv("HOME")
 
 return {
+  -- navigate your code with search labels, enhanced character motions, and Treesitter integration.
+  -- https://github.com/folke/flash.nvim
+  { "folke/flash.nvim", enabled = false }, -- Disabled so that I can use "s" key normally
+
   -- Vim plugin for editing Ruby on Rails applications
   -- https://github.com/tpope/vim-rails
   { "tpope/vim-rails" },
@@ -22,12 +26,23 @@ return {
     "ibhagwan/fzf-lua",
     config = function()
       vim.keymap.set("n", "<C-e>", function()
-        require("fzf-lua").oldfiles({ cwd_only = true })
+        require("fzf-lua").oldfiles({ cwd_only = true, hidden = false })
       end, { desc = "Recent Files" })
     end,
     keys = {
       { "<leader><leader>", vim.NIL }, -- NOTE: This is needed to allow me to remap it in keymaps.lua file
       { "<C-p>", require("fzf-lua").files, desc = "Fzf Files" },
+    },
+  },
+
+  -- browse the file system
+  -- https://github.com/nvim-neo-tree/neo-tree.nvim
+  {
+    "nvim-neo-tree/neo-tree.nvim",
+    opts = {
+      filesystem = {
+        filtered_items = { visible = true }, -- Show hidden files
+      },
     },
   },
 
@@ -82,7 +97,7 @@ return {
     "Wansmer/treesj",
     dependencies = { "nvim-treesitter/nvim-treesitter" },
     config = function()
-      map("n", "<leader>cm", require("treesj").toggle, { desc = "split/join node under cursor" })
+      map("n", "<leader>cj", require("treesj").toggle, { desc = "split/join node under cursor" })
     end,
   },
 
@@ -159,14 +174,28 @@ return {
   -- https://github.com/kawre/leetcode.nvim
   {
     "kawre/leetcode.nvim",
-    build = ":TSUpdate html",
+    -- build = ":TSUpdate html", -- FIXME: Not sure why it's needed but it's not working
     dependencies = {
       "ibhagwan/fzf-lua",
       "nvim-lua/plenary.nvim",
       "MunifTanjim/nui.nvim",
+      "tree-sitter/tree-sitter-html", -- TODO: Add this dependency
     },
-    opts = {
-      lang = "python3",
-    },
+    opts = function(_, opts)
+      opts.lang = "python3"
+      opts.injector = {
+        ["python3"] = {
+          before = {
+            "from typing import List",
+          },
+        },
+      }
+      map("n", "<leader>k", "", { desc = "Leetcode" })
+      map("n", "<leader>kr", ":Leet run<cr>", { desc = "Run" })
+      map("n", "<leader>ks", ":Leet submit<cr>", { desc = "Submit" })
+      map("n", "<leader>kp", ":Leet list<cr>", { desc = "Problems" })
+      map("n", "<leader>kl", ":Leet lang<cr>", { desc = "Language" })
+      map("n", "<leader>kb", ":Leet open<cr>", { desc = "Browser" })
+    end,
   },
 }

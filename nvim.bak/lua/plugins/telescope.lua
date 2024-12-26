@@ -42,21 +42,21 @@ return {
     local map = vim.keymap.set -- for conciseness
     local builtin = require 'telescope.builtin'
 
-    map('n', '<leader>fh', builtin.help_tags, { desc = '[F]ind [H]elp' })
-    map('n', '<leader>fk', builtin.keymaps, { desc = '[F]ind [K]eymaps' })
-    map('n', '<leader>ff', builtin.find_files, { desc = '[F]ind [F]iles' })
-    map('n', '<C-p>', builtin.find_files, { desc = '[F]ind [F]iles' })
-    map('n', '<leader>fs', builtin.builtin, { desc = '[F]ind [S]elect Telescope' })
-    map('n', '<leader>fw', builtin.grep_string, { desc = '[F]ind current [W]ord' })
-    map('n', '<leader>fg', builtin.live_grep, { desc = '[F]ind by [G]rep' })
-    map('n', '<leader>fd', builtin.diagnostics, { desc = '[F]ind [D]iagnostics' })
-    map('n', '<leader>fr', builtin.resume, { desc = '[F]ind [R]esume' })
-    map('n', '<leader>fb', builtin.buffers, { desc = '[F]ind existing [B]uffers' })
-    map('n', '<leader>ft', '<cmd>TodoTelescope<cr>', { desc = '[F]ind [T]odos' })
+    map('n', '<leader>fh', builtin.help_tags, { desc = 'Help' })
+    map('n', '<leader>fk', builtin.keymaps, { desc = 'Keymaps' })
+    map('n', '<leader>ff', builtin.find_files, { desc = 'Files' })
+    map('n', '<C-p>', builtin.find_files, { desc = 'Files' })
+    map('n', '<leader>fs', builtin.builtin, { desc = 'Select Telescope' })
+    map('n', '<leader>fw', builtin.grep_string, { desc = 'Word' })
+    map('n', '<leader>fg', builtin.live_grep, { desc = 'Grep' })
+    map('n', '<leader>fd', builtin.diagnostics, { desc = 'Diagnostics' })
+    map('n', '<leader>fr', builtin.resume, { desc = 'Resume' })
+    map('n', '<leader>fb', builtin.buffers, { desc = 'Buffers' })
+    map('n', '<leader>ft', '<cmd>TodoTelescope<cr>', { desc = 'Todos' })
 
     -- Search recent files in the current working directory
     vim.keymap.set('n', '<C-e>', function()
       builtin.oldfiles { only_cwd = true }
-    end, { desc = '[S]earch [R]ecent Files' })
+    end, { desc = 'Search Recent Files' })
   end,
 }

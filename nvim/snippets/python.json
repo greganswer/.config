@@ -1,0 +1,24 @@
+{
+  "leet": {
+    "prefix": "leet",
+    "body": [
+      "",
+      "'''",
+      "Output:",
+      "    -",
+      "Input:",
+      "    -",
+      "Constraints:",
+      "    -",
+      "Example:",
+      "    -",
+      "Brute Force:",
+      "    -",
+      "Optimization 1:",
+      "    -",
+      "'''",
+      ""
+    ],
+    "description": "Problem Solving Template (Leetcode)"
+  }
+}
