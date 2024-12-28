@@ -97,7 +97,8 @@ return {
     "Wansmer/treesj",
     dependencies = { "nvim-treesitter/nvim-treesitter" },
     config = function()
-      map("n", "<leader>cj", require("treesj").toggle, { desc = "split/join node under cursor" })
+      map("n", "<leader>rj", require("treesj").join, { desc = "Join node under cursor" })
+      map("n", "<leader>rs", require("treesj").split, { desc = "Split node under cursor" })
     end,
   },
 
@@ -174,7 +175,7 @@ return {
   -- https://github.com/kawre/leetcode.nvim
   {
     "kawre/leetcode.nvim",
-    build = ":TSUpdate html", -- FIXME: Not sure why it's needed but it's not working
+    build = ":TSUpdate html",
     dependencies = {
       "ibhagwan/fzf-lua",
       "nvim-lua/plenary.nvim",

@@ -2,37 +2,53 @@
   "leet": {
     "prefix": "leet",
     "body": [
-      "",
       "=begin",
       "Output:",
-      "\t -",
+      "\t\t -",
       "Input:",
-      "\t -",
+      "\t\t -",
       "Constraints:",
-      "\t -",
+      "\t\t -",
       "Example:",
-      "\t -",
+      "\t\t -",
       "Brute Force:",
-      "\t -",
+      "\t\t -",
       "Optimization 1:",
-      "\t -",
+      "\t\t -",
       "=end",
       ""
     ],
     "description": "Problem Solving Template (Leetcode)"
+  },
+  "active_model": {
+    "prefix": "active_model",
+    "body": [
+      "include ActiveModel::Model",
+      "def self.call(*args)",
+      "new(*args).call",
+      "end",
+      "def initialize(*args)",
+      "super",
+      "end",
+      "def call",
+      "return unless valid?",
+      "end",
+      "private"
+    ],
+    "description": "Active model class body"
   },
   "rspec_is_expected": {
     "prefix": "itie",
     "body": "it { is_expected.to ${1:matcher} }$0",
     "description": "RSpec supports a one-liner syntax for setting an expectation on the subject"
   },
-  "rspec_context_is_expected": {
-    "prefix": "contis",
+  "rspec_context_it": {
+    "prefix": "contp",
     "body": [
-      "context '${1:message}' do",
-      "$0",
-      "it { is_expected.to ${2:matcher} }",
-      "end"
+      "context '${1:message}', :pending do",
+      "it '${2}'",
+      "end",
+      "$0"
     ],
     "description": "RSpec context with one-liner syntax for setting an expectation on the subject"
   }
