@@ -9,6 +9,14 @@ return {
   -- https://github.com/folke/flash.nvim
   { "folke/flash.nvim", enabled = false }, -- Disabled so that I can use "s" key normally
 
+  -- Use one buffer instead of multiple
+  -- https://github.com/akinsho/bufferline.nvim
+  { "akinsho/bufferline.nvim", enabled = false },
+
+  -- I tried to use this one but was unable to use things like "binding.pry" easily
+  -- https://github.com/nvim-neotest/neotest
+  { "nvim-neotest/neotest", enabled = false },
+
   -- Vim plugin for editing Ruby on Rails applications
   -- https://github.com/tpope/vim-rails
   { "tpope/vim-rails" },
@@ -24,14 +32,21 @@ return {
   -- https://github.com/ibhagwan/fzf-lua
   {
     "ibhagwan/fzf-lua",
-    config = function()
-      vim.keymap.set("n", "<C-e>", function()
-        require("fzf-lua").oldfiles({ cwd_only = true, hidden = false })
-      end, { desc = "Recent Files" })
-    end,
+    opts = {
+      oldfiles = {
+        include_current_session = true, -- load old buffers in the current session
+        cwd_only = true,
+      },
+      previewers = {
+        builtin = {
+          syntax_limit_b = 1024 * 100, -- Only show files less than 100KB
+        },
+      },
+    },
     keys = {
       { "<leader><leader>", vim.NIL }, -- NOTE: This is needed to allow me to remap it in keymaps.lua file
       { "<C-p>", require("fzf-lua").files, desc = "Fzf Files" },
+      { "<C-e>", require("fzf-lua").oldfiles, desc = "Fzf Buffers" },
     },
   },
 
@@ -86,10 +101,6 @@ return {
       { "<C-l>", "<cmd>TmuxNavigateRight<cr>", desc = "Got to the right pane" },
     },
   },
-
-  -- Use one buffer instead of multiple
-  -- https://github.com/akinsho/bufferline.nvim
-  { "akinsho/bufferline.nvim", enabled = false },
 
   -- Neovim plugin for splitting/joining blocks of code like arrays, hashes, statements, objects, dictionaries, etc.
   -- https://github.com/Wansmer/treesj
@@ -146,6 +157,28 @@ return {
           show_relative_numbers = true,
         },
       })
+    end,
+  },
+
+  -- easily interact with tmux from vim
+  -- https://github.com/preservim/vimux
+  { "preservim/vimux" },
+
+  -- A Vim wrapper for running tests on different granularities.
+  -- https://github.com/vim-test/vim-test
+  -- https://github.com/skbolton/titan/blob/main/nvim/nvim/lua/testing.lua
+  {
+    "vim-test/vim-test",
+    config = function()
+      vim.g["test#strategy"] = "vimux"
+      vim.g.VimuxOrientation = "v"
+      vim.g.VimuxUseNearest = 0
+      -- Keymap
+      vim.keymap.set("n", "<Leader>t", "", { desc = "+test" })
+      vim.keymap.set("n", "<Leader>tf", ":TestFile <CR>", { desc = "File", noremap = true, silent = true })
+      vim.keymap.set("n", "<Leader>tn", ":TestNearest <CR>", { desc = "Nearest", noremap = true, silent = true })
+      vim.keymap.set("n", "<Leader>tl", ":TestLast <CR>", { desc = "Last", noremap = true, silent = true })
+      vim.keymap.set("n", "<Leader>tv", ":TestVisit <CR>", { desc = "Visit Last", noremap = true, silent = true })
     end,
   },
 
