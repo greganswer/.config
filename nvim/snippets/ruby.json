@@ -4,17 +4,17 @@
     "body": [
       "=begin",
       "Output:",
-      "\t\t -",
-      "Input:",
-      "\t\t -",
+      "\t\t- ${0}",
       "Constraints:",
-      "\t\t -",
-      "Example:",
-      "\t\t -",
+      "\t\t-",
+      "Input:",
+      "\t\t-",
+      "Examples:",
+      "\t\t",
       "Brute Force:",
-      "\t\t -",
+      "\t\t-",
       "Optimization 1:",
-      "\t\t -",
+      "\t\t-",
       "=end",
       ""
     ],
@@ -24,14 +24,12 @@
     "prefix": "active_model",
     "body": [
       "include ActiveModel::Model",
-      "def self.call(*args)",
-      "new(*args).call",
-      "end",
-      "def initialize(*args)",
-      "super",
-      "end",
+      "attr_accessor :${1}",
       "def call",
       "return unless valid?",
+      "",
+      "# TODO: Implement",
+      "some_action",
       "end",
       "private"
     ],
@@ -42,14 +40,29 @@
     "body": "it { is_expected.to ${1:matcher} }$0",
     "description": "RSpec supports a one-liner syntax for setting an expectation on the subject"
   },
-  "rspec_context_it": {
-    "prefix": "contp",
+  "rspec_context_it_is_expected": {
+    "prefix": "conte",
     "body": [
-      "context '${1:message}', :pending do",
-      "it '${2}'",
+      "context \"${1:message}\" do",
+      "it { is_expected.to ${2:matcher} }",
       "end",
       "$0"
     ],
     "description": "RSpec context with one-liner syntax for setting an expectation on the subject"
+  },
+  "rspec_context_it": {
+    "prefix": "conti",
+    "body": [
+      "context \"${1:message}\" do",
+      "it \"${2}\"",
+      "end",
+      "$0"
+    ],
+    "description": "RSpec context with one-liner syntax for setting an expectation on the subject"
+  },
+  "rspec_let_create": {
+    "prefix": "letcr",
+    "body": "let(:${1}) { create(:${1}${2}) }${0}",
+    "description": "RSpec create a record in let block"
   }
 }
