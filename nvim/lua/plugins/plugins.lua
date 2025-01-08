@@ -102,17 +102,6 @@ return {
     },
   },
 
-  -- Neovim plugin for splitting/joining blocks of code like arrays, hashes, statements, objects, dictionaries, etc.
-  -- https://github.com/Wansmer/treesj
-  {
-    "Wansmer/treesj",
-    dependencies = { "nvim-treesitter/nvim-treesitter" },
-    config = function()
-      map("n", "<leader>rj", require("treesj").join, { desc = "Join node under cursor" })
-      map("n", "<leader>rs", require("treesj").split, { desc = "Split node under cursor" })
-    end,
-  },
-
   -- LSP config
   -- https://github.com/neovim/nvim-lspconfig
   {
@@ -175,6 +164,7 @@ return {
       vim.g.VimuxUseNearest = 0
       -- Keymap
       vim.keymap.set("n", "<Leader>t", "", { desc = "+test" })
+      vim.keymap.set("n", "<Leader>ta", ":TestSuite <CR>", { desc = "All", noremap = true, silent = true })
       vim.keymap.set("n", "<Leader>tf", ":TestFile <CR>", { desc = "File", noremap = true, silent = true })
       vim.keymap.set("n", "<Leader>tn", ":TestNearest <CR>", { desc = "Nearest", noremap = true, silent = true })
       vim.keymap.set("n", "<Leader>tl", ":TestLast <CR>", { desc = "Last", noremap = true, silent = true })
@@ -204,6 +194,17 @@ return {
     end,
   },
 
+  -- Neovim plugin for splitting/joining blocks of code like arrays, hashes, statements, objects, dictionaries, etc.
+  -- https://github.com/Wansmer/treesj
+  {
+    "Wansmer/treesj",
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    config = function()
+      map("n", "<leader>rj", require("treesj").join, { desc = "Join node under cursor" })
+      map("n", "<leader>rs", require("treesj").split, { desc = "Split node under cursor" })
+    end,
+  },
+
   -- Solve LeetCode problems within Neovim
   -- https://github.com/kawre/leetcode.nvim
   {
@@ -230,6 +231,7 @@ return {
       map("n", "<leader>kp", ":Leet list<cr>", { desc = "Problems" })
       map("n", "<leader>kl", ":Leet lang<cr>", { desc = "Language" })
       map("n", "<leader>kb", ":Leet open<cr>", { desc = "Browser" })
+      map("n", "<leader>kx", ":Leet reset<cr>", { desc = "Reset" })
     end,
   },
 }
