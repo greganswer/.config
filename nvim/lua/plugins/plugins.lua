@@ -127,6 +127,27 @@ return {
     },
   },
 
+  {
+    "stevearc/conform.nvim",
+    opts = {
+      formatters_by_ft = {
+        sql = { "sql_formatter" }, -- https://github.com/sql-formatter-org/sql-formatter
+      },
+      formatters = {
+        sql_formatter = {
+          args = { "--config", HOME .. "/.config/.sql-formatter.json", "--" },
+        },
+      },
+    },
+  },
+
+  -- {
+  --   "sql-formatter-org/sql-formatter",
+  --   config = function(_, opts)
+  --     opts.keywordCase = "upper"
+  --   end,
+  -- },
+
   -- Spell checking
   -- https://github.com/tekumara/typos-lsp
   {
@@ -206,6 +227,7 @@ return {
   },
 
   -- Solve LeetCode problems within Neovim
+  -- Login using: https://github.com/kawre/leetcode.nvim/issues/95#issuecomment-2071058406
   -- https://github.com/kawre/leetcode.nvim
   {
     "kawre/leetcode.nvim",
@@ -230,8 +252,10 @@ return {
       map("n", "<leader>ks", ":Leet submit<cr>", { desc = "Submit" })
       map("n", "<leader>kp", ":Leet list<cr>", { desc = "Problems" })
       map("n", "<leader>kl", ":Leet lang<cr>", { desc = "Language" })
-      map("n", "<leader>kb", ":Leet open<cr>", { desc = "Browser" })
-      map("n", "<leader>kx", ":Leet reset<cr>", { desc = "Reset" })
+      map("n", "<leader>ko", ":Leet open<cr>", { desc = "Browser" })
+      map("n", "<leader>ku", ":Leet reset<cr>", { desc = "Reset" })
+      map("n", "<leader>kr", ":Leet restore<cr>", { desc = "Restore" })
+      map("n", "<leader>ku", ":Leet cache update<cr>", { desc = "Cache update" })
     end,
   },
 }

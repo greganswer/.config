@@ -11,6 +11,10 @@
         "path": "./ruby.json"
       },
       {
+        "language": "sql",
+        "path": "./sql.json"
+      },
+      {
         "language": "markdown",
         "path": "./markdown.json"
       }

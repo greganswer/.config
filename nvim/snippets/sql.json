@@ -1,0 +1,23 @@
+{
+  "leet": {
+    "prefix": "leet",
+    "body": [
+      "/*",
+      "Restate:",
+      "----------",
+      "${0}",
+      "",
+      "Output:",
+      "----------",
+      "",
+      "Constraints:",
+      "----------",
+      "",
+      "Tables:",
+      "----------",
+      "",
+      "*/"
+    ],
+    "description": "Problem Solving Template (Leetcode)"
+  }
+}
