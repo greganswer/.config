@@ -106,11 +106,18 @@ return {
   -- https://github.com/neovim/nvim-lspconfig
   {
     "neovim/nvim-lspconfig",
-    opts = {
-      servers = {
-        typos_lsp = { enabled = true }, --NOTE: Set to false if this type of spell checking becomes annoying.
-      },
-    },
+    lazy = false,
+    config = function()
+      local lspconfig = require("lspconfig")
+      lspconfig.typos_lsp.setup({})
+      lspconfig.tsserver.setup({
+        init_options = {
+          preferences = {
+            disableSuggestions = true,
+          },
+        },
+      })
+    end,
   },
 
   -- Linting
@@ -132,6 +139,17 @@ return {
     opts = {
       formatters_by_ft = {
         sql = { "sql_formatter" }, -- https://github.com/sql-formatter-org/sql-formatter
+
+        -- NOTE: prettierd is supposedly faster than regular prettier
+        javascript = { "prettierd", "prettier", stop_after_first = true },
+        typescript = { "prettierd", "prettier", stop_after_first = true },
+        javascriptreact = { "prettierd", "prettier", stop_after_first = true },
+        typescriptreact = { "prettierd", "prettier", stop_after_first = true },
+        css = { "prettierd", "prettier", stop_after_first = true },
+        html = { "prettierd", "prettier", stop_after_first = true },
+        json = { "prettierd", "prettier", stop_after_first = true },
+        yaml = { "prettierd", "prettier", stop_after_first = true },
+        graphql = { "prettierd", "prettier", stop_after_first = true },
       },
       formatters = {
         sql_formatter = {
@@ -253,8 +271,8 @@ return {
       map("n", "<leader>kp", ":Leet list<cr>", { desc = "Problems" })
       map("n", "<leader>kl", ":Leet lang<cr>", { desc = "Language" })
       map("n", "<leader>ko", ":Leet open<cr>", { desc = "Browser" })
-      map("n", "<leader>ku", ":Leet reset<cr>", { desc = "Reset" })
-      map("n", "<leader>kr", ":Leet restore<cr>", { desc = "Restore" })
+      map("n", "<leader>kt", ":Leet reset<cr>", { desc = "Reset" })
+      map("n", "<leader>ky", ":Leet yank<cr>", { desc = "Yank" })
       map("n", "<leader>ku", ":Leet cache update<cr>", { desc = "Cache update" })
     end,
   },
