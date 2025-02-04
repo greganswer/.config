@@ -106,18 +106,27 @@ return {
   -- https://github.com/neovim/nvim-lspconfig
   {
     "neovim/nvim-lspconfig",
-    lazy = false,
-    config = function()
-      local lspconfig = require("lspconfig")
-      lspconfig.typos_lsp.setup({})
-      lspconfig.tsserver.setup({
-        init_options = {
-          preferences = {
-            disableSuggestions = true,
-          },
-        },
-      })
-    end,
+    opts = {
+      servers = {
+        typos_lsp = { enabled = true }, --NOTE: Set to false if this type of spell checking becomes annoying.
+        tsserver = { enabled = true },
+        ts_ls = { enabled = false },
+        vtsls = { enabled = false },
+      },
+      setup = {
+        tsserver = function(_, opts)
+          local lspconfig = require("lspconfig")
+          lspconfig.tsserver.setup({
+            init_options = {
+              preferences = {
+                disableSuggestions = true,
+              },
+            },
+          })
+          return true
+        end,
+      },
+    },
   },
 
   -- Linting
