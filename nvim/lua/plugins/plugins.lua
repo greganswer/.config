@@ -129,6 +129,25 @@ return {
     },
   },
 
+  -- https://github.com/williamboman/mason.nvim/issues/1777#issuecomment-2579045185
+  {
+    "williamboman/mason-lspconfig.nvim",
+    lazy = true,
+    dependencies = { "neovim/nvim-lspconfig" },
+    config = function()
+      require("mason").setup({})
+      require("mason-lspconfig").setup({})
+      require("mason-lspconfig").setup_handlers({
+        ruby_lsp = function()
+          require("lspconfig").ruby_lsp.setup({
+            -- Handle different Ruby versions per project
+            cmd_env = { BUNDLE_GEMFILE = vim.fn.getenv("GLOBAL_GEMFILE") },
+          })
+        end,
+      })
+    end,
+  },
+
   -- Linting
   -- https://github.com/mfussenegger/nvim-lint
   {
@@ -157,7 +176,8 @@ return {
         css = { "prettierd", "prettier", stop_after_first = true },
         html = { "prettierd", "prettier", stop_after_first = true },
         json = { "prettierd", "prettier", stop_after_first = true },
-        yaml = { "prettierd", "prettier", stop_after_first = true },
+        -- yaml = { "prettierd", "prettier", stop_after_first = true },
+        -- yml = { "prettierd", "prettier", stop_after_first = true },
         graphql = { "prettierd", "prettier", stop_after_first = true },
       },
       formatters = {
@@ -216,6 +236,7 @@ return {
       vim.keymap.set("n", "<Leader>tf", ":TestFile <CR>", { desc = "File", noremap = true, silent = true })
       vim.keymap.set("n", "<Leader>tn", ":TestNearest <CR>", { desc = "Nearest", noremap = true, silent = true })
       vim.keymap.set("n", "<Leader>tl", ":TestLast <CR>", { desc = "Last", noremap = true, silent = true })
+      vim.keymap.set("n", "<Leader>j", ":TestLast <CR>", { desc = "Test Last", noremap = true, silent = true })
       vim.keymap.set("n", "<Leader>tv", ":TestVisit <CR>", { desc = "Visit Last", noremap = true, silent = true })
     end,
   },
