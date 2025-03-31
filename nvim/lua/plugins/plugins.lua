@@ -306,4 +306,17 @@ return {
       map("n", "<leader>ku", ":Leet cache update<cr>", { desc = "Cache update" })
     end,
   },
+
+  -- https://github.com/CopilotC-Nvim/CopilotChat.nvim
+  {
+    "CopilotC-Nvim/CopilotChat.nvim",
+    opts = {
+      mappings = {
+        reset = {
+          normal = "<C-q>",
+          insert = "<C-q>",
+        },
+      },
+    },
+  },
 }
