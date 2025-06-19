@@ -74,7 +74,7 @@ return {
       keymap = {
         ["<C-k>"] = { "select_prev", "fallback" },
         ["<C-j>"] = { "select_next", "fallback" },
-        ["<Tab>"] = { "select_and_accept" },
+        preset = "super-tab",
       },
     },
   },
@@ -318,6 +318,15 @@ return {
           insert = "<C-q>",
         },
       },
+    },
+  },
+
+  --- browse the file system and other tree like structures
+  --- https://github.com/nvim-neo-tree/neo-tree.nvim
+  {
+    "nvim-neo-tree/neo-tree.nvim",
+    keys = {
+      ["Z"] = "expand_all_nodes", -- TODO: Make this work
     },
   },
 }
