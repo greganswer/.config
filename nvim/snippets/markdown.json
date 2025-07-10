@@ -1,4 +1,22 @@
 {
+  "Daily Journal": {
+    "prefix": "daily",
+    "body": [
+      "# ${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE}",
+      "",
+      "## Tasks",
+      "",
+      " - [ ] $0",
+      "",
+      "## Completed",
+      "",
+      "1.",
+      "",
+      "## Journal",
+      ""
+    ],
+    "description": "Journal"
+  },
   "Changelog": {
     "prefix": "chlog",
     "body": [
