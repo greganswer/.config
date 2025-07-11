@@ -5,12 +5,12 @@
       "# ${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE}",
       "",
       "## Tasks",
-      "",
       " - [ ] $0",
       "",
+      "## Lessons",
+      "1.",
       "",
-      "## Journal",
-      ""
+      "## Journal"
     ],
     "description": "Journal"
   },
@@ -25,8 +25,7 @@
       "",
       "### Change",
       "",
-      "### Removed",
-      ""
+      "### Removed"
     ],
     "description": "A basic change log"
   }
