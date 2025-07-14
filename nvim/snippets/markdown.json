@@ -4,17 +4,20 @@
     "body": [
       "# ${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE}",
       "",
-      "## ☑️  Tasks",
+      "## Tasks",
       "### MIT",
       "### The Rest",
       "- [ ] $0",
       "",
-      "## 🗒 Notes",
-      "",
-      "## 💡 Lessons",
+      "## Accomplished",
       "1.",
       "",
-      "## 📓 Journal"
+      "## Lessons",
+      "1.",
+      "",
+      "## Notes",
+      "",
+      "## Journal"
     ],
     "description": "Journal"
   },
