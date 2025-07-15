@@ -24,6 +24,12 @@
   "Changelog": {
     "prefix": "chlog",
     "body": [
+      "````gherkin",
+      "As a ",
+      "I want to ",
+      "So that ",
+      "```",
+      "",
       "$0## Changes",
       "",
       "### Added",
