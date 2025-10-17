@@ -20,6 +20,16 @@ require("lazy").setup({
     { "LazyVim/LazyVim", import = "lazyvim.plugins" },
     -- import/override with your plugins
     { import = "plugins" },
+    {
+      "folke/tokyonight.nvim",
+      opts = {
+        style = "moon",
+        on_highlights = function(hl, c)
+          hl.Comment = { fg = "#3f466a", italic = true }
+          hl["@comment"] = { fg = "#3f466a", italic = true }
+        end,
+      },
+    },
   },
   defaults = {
     -- By default, only LazyVim plugins will be lazy-loaded. Your custom plugins will load during startup.
