@@ -27,6 +27,7 @@ require("lazy").setup({
         on_highlights = function(hl, c)
           hl.Comment = { fg = "#3f466a", italic = true }
           hl["@comment"] = { fg = "#3f466a", italic = true }
+          hl.ColorColumn = { bg = "#242639" }
         end,
       },
     },
